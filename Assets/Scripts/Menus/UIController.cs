@@ -109,7 +109,8 @@ public class UIController : MonoBehaviour
         else if (SceneManager.GetActiveScene().name.Equals("Ice_Takeoff")) { gameManager.GetComponent<GameManager>().startNextScene("Lava_Landing"); }
         else if (SceneManager.GetActiveScene().name.Equals("Lava_Landing")) { gameManager.GetComponent<GameManager>().startNextScene("LavaWorld"); }
         else if (SceneManager.GetActiveScene().name.Equals("LavaWorld")) { gameManager.GetComponent<GameManager>().startNextScene("Lava_Takeoff"); }
-        else{ gameManager.GetComponent<GameManager>().startNextScene("MainMenu"); }
+        else if (SceneManager.GetActiveScene().name.Equals("Lava_Takeoff")) { gameManager.GetComponent<GameManager>().startNextScene("Outro"); }
+        else { gameManager.GetComponent<GameManager>().startNextScene("MainMenu"); }
 
     }
 

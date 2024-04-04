@@ -29,4 +29,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/New Folder/Lava_Takeoff.unity
     guid: 4769aa7f69ec87a4c8d17808522516ef
+  - enabled: 1
+    path: Assets/Scenes/Outro.unity
+    guid: b1d2b29e6f7945a42be938d3c61ef839
   m_configObjects: {}

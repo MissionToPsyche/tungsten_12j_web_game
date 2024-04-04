@@ -15,7 +15,7 @@ public class VolumeSlider : MonoBehaviour
         //sets default volume based on two scenarios:
             //If: the game is first loaded
             //else: some settings are already set
-        if (!PlayerPrefs.HasKey("musticVolume"))
+        if (!PlayerPrefs.HasKey("musicVolume"))
         {
             PlayerPrefs.SetFloat("musicVolume", 1f);
             Load();

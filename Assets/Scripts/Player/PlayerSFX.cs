@@ -17,42 +17,77 @@ public class PlayerSFX : MonoBehaviour
     private AudioClip JumpAudio;
 
     [SerializeField]
-    private AudioSource PlayerAudio;
+    private AudioSource WalkingPlayer;
+
+    [SerializeField]
+    private AudioSource JumpingPlayer;
+
+
+    Animator anim;
+
+    private bool alreadyPlaying = false;
 
     //Update Step Sound based on level
     void Start(){
 
         updateStepAudio();
+        anim = GetComponent<Animator>();
 
+    }
+
+    void Update()
+    {
+
+        if (anim.GetCurrentAnimatorStateInfo(0).IsName("Idle") || anim.GetBool("Grounded") == false) 
+        {
+            stopStep();
+            alreadyPlaying = false;
+        }
+        else if (anim.GetCurrentAnimatorStateInfo(0).IsName("Move") && alreadyPlaying == false)
+        {
+            playStep();
+            alreadyPlaying = true;
+        }
     }
 
     public void playStep() 
     {
-        updateStepAudio();
-        PlayerAudio.loop = true;
-        PlayerAudio.Play();  
+
+        //JumpingPlayer.gameObject.SetActive(false);
+        WalkingPlayer.gameObject.SetActive(true);
+
+        //updateStepAudio();
+        WalkingPlayer.loop = true;
+        WalkingPlayer.Play();  
     }
 
     public void stopStep()
     {
-        PlayerAudio.Stop();
+        WalkingPlayer.Stop();
+        WalkingPlayer.gameObject.SetActive(false);
     }
 
-    public void playJump() {
-        PlayerAudio.loop = false;
-        PlayerAudio.clip = JumpAudio;
-        PlayerAudio.Play();
+    public void playJump() 
+    {
+        //stopStep();
+        WalkingPlayer.loop = false;
+        JumpingPlayer.gameObject.SetActive(true);
+
+        //JumpingPlayer.loop = false;
+        //JumpingPlayer.clip = JumpAudio;
+        JumpingPlayer.Play();
+
     }
 
     private void updateStepAudio() {
 
         if (SceneManager.GetActiveScene().name.Equals("IceWorld"))
         {
-            PlayerAudio.clip = IceStepAudio;
+            WalkingPlayer.clip = IceStepAudio;
         }
         else
         {
-            PlayerAudio.clip = LavaStepAudio;
+            WalkingPlayer.clip = LavaStepAudio;
         }
 
     }

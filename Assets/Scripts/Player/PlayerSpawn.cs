@@ -15,17 +15,28 @@ public class PlayerSpawn : MonoBehaviour
     private ParticleSystem particle;
     public Transform currentSpawnPoint;
 
+    [SerializeField]
+    private AudioSource RespawnAudio;
+    private bool playOnce = false;
+
     private bool respawnFlag = false;
 
     private void Update()
     {
-        if (respawnFlag == true)
-        {
+        if (respawnFlag == true) {
+
+            if (!playOnce)
+            {
+                RespawnAudio.Play();
+                playOnce = true;
+            }
+
             if (this.transform.position == currentSpawnPoint.position)
             {
                 if (particle.isPlaying == false)
                 {
                     particle.Play();
+                    this.transform.parent = null;
                 }
                 if (particle.time >= 1.5f)
                 {
@@ -34,6 +45,8 @@ public class PlayerSpawn : MonoBehaviour
                 }
                 if (particle.time >= 1.9f)
                 {
+                    playOnce = false;
+
                     particle.Stop();
                     respawnFlag = false;
                     movement.enabled = true;
@@ -44,12 +57,14 @@ public class PlayerSpawn : MonoBehaviour
                 movement.enabled = false;
                 mesh.enabled = false;
                 hat.enabled = false;
+                
                 if (particle.isPlaying == false)
                 {
                     particle.Play();
                 }
                 if (particle.time >= 1.9f)
                 {
+                    
                     particle.Stop();
                     this.transform.position = currentSpawnPoint.position;
                 }

@@ -26,6 +26,9 @@ public class SatelliteCollect : MonoBehaviour, I_Interactable
     private GameObject UIController;
 
     [SerializeField]
+    private GameObject Player;
+
+    [SerializeField]
     private GameObject gameManager;
 
 
@@ -34,10 +37,17 @@ public class SatelliteCollect : MonoBehaviour, I_Interactable
     public void activateElements() 
     {
 
+        Player.gameObject.GetComponent<PlayerSFX>().stopStep(); //Stop the walking sound effect
+
         gameObject.SetActive(false); //turn part invisible
 
         //Create a new satellite part based on object name and description and append it to the collected satellite parts list
-        SatellitePart newPart = new SatellitePart(partName, partDescription, partImage);
+        GameObject NP = new GameObject("SatellitePart");
+        SatellitePart newPart = NP.AddComponent<SatellitePart>();
+        newPart.setName(partName);
+        newPart.setDescription(partDescription);
+        newPart.setImage(partImage);
+
         gameManager.GetComponent<GameManager>().setNewSatellitePart(newPart);
 
         //Start animation

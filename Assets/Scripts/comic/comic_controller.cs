@@ -8,10 +8,12 @@ public class comic_controller : MonoBehaviour
 {
     // Start is called before the first frame update
     [SerializeField]
+    private string[] videoClips;
 
-    private VideoClip[] videoClips;
     [SerializeField]
     private VideoPlayer videoPlayer;
+
+    public string nextScene;
 
     private int videoClipsIndex = -1;
 
@@ -19,10 +21,12 @@ public class comic_controller : MonoBehaviour
         videoClipsIndex++;
         if (videoClipsIndex >= videoClips.Length)
         {
-            SceneManager.LoadScene("Ice_Landing");
+            SceneManager.LoadScene(nextScene);
+            //Ice_Landing
+            //MainMenu
         }
         else {
-            videoPlayer.clip = videoClips[videoClipsIndex];
+            videoPlayer.url = System.IO.Path.Combine(Application.streamingAssetsPath, videoClips[videoClipsIndex]);
             videoPlayer.Play();
         }
     }

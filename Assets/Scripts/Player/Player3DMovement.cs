@@ -95,21 +95,21 @@ public class Player3DMovement : MonoBehaviour
             targetDirection = targetRotation * Vector3.forward;
             transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, turnSpeed * Time.deltaTime);
 
-            //play walking audio if grounded
-            if (isGrounded && !isWalking)
-            {
-                isWalking = true;
-                pSFX.playStep();
-            }
+            /*    //play walking audio if grounded
+                if (isGrounded && !isWalking)
+                {
+                    isWalking = true;
+                    pSFX.playStep();
+                }*/
         }
         else
         {
-            //player stops walking
-            if (isGrounded && isWalking)
+            /*//player stops walking
+            if (isGrounded)
             {
                 isWalking = false;
                 pSFX.stopStep();
-            }
+            }*/
         }
 
         movement = targetDirection * speed * playerInput.magnitude;
@@ -119,16 +119,18 @@ public class Player3DMovement : MonoBehaviour
             float foo = Mathf.Sqrt(jumpHeight * gravity);
             playerJumpVelocity.y = foo;
 
-            //Play jump audio
-            pSFX.stopStep();
-            pSFX.playJump();
-
             isWalking = false;
+
+            //Debug.Log("Walking: " + isWalking);
+
+            //Play jump audio
+            pSFX.playJump();
 
         }
 
         playerController.Move(movement * Time.deltaTime);
         playerController.Move(playerJumpVelocity * jumpSpeed * Time.deltaTime);
+
     }
 
     private void LateUpdate()
@@ -151,7 +153,7 @@ public class Player3DMovement : MonoBehaviour
             normal = hit.normal;
         }
 
-        Debug.Log(ground);
+        //Debug.Log(ground);
 
         return ground;
     }

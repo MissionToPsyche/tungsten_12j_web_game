@@ -10,13 +10,22 @@ public class SurfaceCollision : MonoBehaviour
 
     public bool isOnLift = false;
 
+    public ParticleSystem ps; //Reference to animator for sinking cube
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Player"))
         {
             isOnLift = true;
-            other.transform.SetParent(parent);
+
+            if (ps.isPlaying)
+            {
+                other.transform.SetParent(null);
+            }
+            else 
+            {
+                other.transform.SetParent(parent);
+            }
         }
     }
 
@@ -25,7 +34,16 @@ public class SurfaceCollision : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             isOnLift = true;
-            other.transform.SetParent(parent);
+
+            if (ps.isPlaying)
+            {
+                other.transform.SetParent(null);
+            }
+            else
+            {
+                other.transform.SetParent(parent);
+            }
+
         }
     }
 

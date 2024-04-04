@@ -11,13 +11,28 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private GameObject UIController;
 
+    [SerializeField]
+    private GameObject Player;
+
     //List of all parts collected
     static private List<SatellitePart> Parts = new List<SatellitePart>();
+
+    void Start()
+    {
+        //renews part list at beginning of game
+        if (SceneManager.GetActiveScene().name.Equals("IceWorld")) {
+            Parts = new List<SatellitePart>();
+            Debug.Log("Parts list cleared!");
+        }
+    }
 
     // Update is called once per frame
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.P)) {
+
+            Player.GetComponent<PlayerSFX>().stopStep(); //stop walking sfx
+            
             UIController.GetComponent<UIController>().openPause();
         }
 
@@ -36,12 +51,17 @@ public class GameManager : MonoBehaviour
     }
 
     public void checkForLevelCompletion() {
-        if ((Parts.Count) % 3 == 0 && Parts.Count > 0)
+        //If the all the parts in a level have been collected, start level complete animation
+        if ((Parts.Count >= 3) &&
+            (SceneManager.GetActiveScene().name.Equals("IceWorld")))
         {
-            //If the all the parts in a level have been collected, start level complete animation
+            startNextScene("Ice_Takeoff");
             //UIController.GetComponent<UIController>().startLevelComplete();
-            if (SceneManager.GetActiveScene().name.Equals("IceWorld")) { startNextScene("Ice_Takeoff"); }
-            else if (SceneManager.GetActiveScene().name.Equals("LavaWorld")) { startNextScene("Lava_Takeoff"); }
+        }
+        else if ((Parts.Count >= 6) &&
+            (SceneManager.GetActiveScene().name.Equals("LavaWorld"))) 
+        { 
+            startNextScene("Lava_Takeoff"); 
         }
     }
 

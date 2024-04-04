@@ -7,12 +7,12 @@ public class NPCBehaviour : MonoBehaviour, I_Interactable
 
     [SerializeField]
     private string NPCName;
-    
-    [SerializeField]
-    private string[] NPCDialouge;
 
     [SerializeField]
     private GameObject UIController;
+
+    [SerializeField]
+    private string[] NPCDialouge;
 
     private int conversationIndex = 0;
     private bool canInteract = true;

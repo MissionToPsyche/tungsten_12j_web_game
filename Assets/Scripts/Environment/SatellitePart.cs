@@ -16,6 +16,21 @@ public class SatellitePart : MonoBehaviour
         Image = image;
     }
 
+    public void setName(string newName)
+    {
+        Name = newName;
+    }
+
+    public void setDescription(string newDescription)
+    {
+        Description = newDescription;
+    }
+
+    public void setImage(Sprite newSprite)
+    {
+        Image = newSprite;
+    }
+
     public string getName() {
         return Name;
     }

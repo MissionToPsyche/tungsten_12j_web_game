@@ -19,6 +19,7 @@ public class PlayerInteract : MonoBehaviour
 
         if (isInteracting && interactable != null && interactable.GetCanInteract() == true)
         {
+            this.GetComponent<PlayerSFX>().stopStep(); //Stop the walking sound effect
             interactable.Interact(triggerName);
 
         }
