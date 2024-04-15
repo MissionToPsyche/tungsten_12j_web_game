@@ -57,10 +57,17 @@ public class SatelliteCollect : MonoBehaviour, I_Interactable
             objectiveMarker.GetComponent<ObjectiveMarker>().setTarget(nextPiece);
         }
 
-        //Make locked elements active
+        //Make locked elements active if not active and vice versa
         foreach (GameObject element in LockedElements)
         {
-            element.SetActive(true);
+            if (!element.activeInHierarchy)
+            {
+                element.SetActive(true);
+            }
+            else 
+            {
+                element.SetActive(false);
+            }
         }
     }
 

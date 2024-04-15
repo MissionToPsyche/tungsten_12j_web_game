@@ -7,9 +7,6 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 
-//I'll turn this into an interface and refactor this class and its children when we finish our demo!
-// - Kris
-
 public class UIController : MonoBehaviour
 {
     [SerializeField]
@@ -20,8 +17,6 @@ public class UIController : MonoBehaviour
     private Animator DialougeAnimator;
     [SerializeField]
     private Animator LevelCompleteAnimator;
-    /*[SerializeField]
-    private Animator LevelStartAnimator;*/
 
     [SerializeField]
     private GameObject SatelliteCanvas;
@@ -83,7 +78,7 @@ public class UIController : MonoBehaviour
         //the canvas will start its animation the moment it becomes active for the first time
         LevelCompleteCanvas.SetActive(true);
 
-        //LevelCompleteAnimator.SetTrigger("CompleteExitTrigger");
+
     }
 
     public void closeLevel()

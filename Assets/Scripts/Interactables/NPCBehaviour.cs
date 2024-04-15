@@ -66,7 +66,7 @@ public class NPCBehaviour : MonoBehaviour, I_Interactable
     public void Interact(string triggerName)
     {
         //Set UI Values
-        setNextDialouge();
+        startDialouge();
 
         //Open UI 
         UIController.GetComponent<UIController>().openDialouge(this);

@@ -402,7 +402,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &493323032
 RectTransform:
   m_ObjectHideFlags: 0
@@ -733,7 +733,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1164219775
 RectTransform:
   m_ObjectHideFlags: 0
@@ -992,7 +992,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1369702767}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1dd34161e028a8b4386c35702a357b24, type: 3}
   m_Name: 
@@ -1016,7 +1016,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!328 &1693095301
 VideoPlayer:
   m_ObjectHideFlags: 0
@@ -1035,7 +1035,7 @@ VideoPlayer:
   m_TargetMaterialProperty: <noninit>
   m_RenderMode: 2
   m_AspectRatio: 2
-  m_DataSource: 0
+  m_DataSource: 1
   m_TimeUpdateMode: 2
   m_PlaybackSpeed: 1
   m_AudioOutputMode: 2
@@ -1046,7 +1046,7 @@ VideoPlayer:
   m_DirectAudioMutes: 
   m_ControlledAudioTrackCount: 0
   m_PlayOnAwake: 0
-  m_SkipOnDrop: 0
+  m_SkipOnDrop: 1
   m_Looping: 0
   m_WaitForFirstFrame: 0
   m_FrameReadyEventEnabled: 0
@@ -1135,7 +1135,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: bf9846518b04bab4babd21e97def47bc, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1205,14 +1205,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3a5c285bded9a04d9d61114f1fbcf11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  videoClips:
-  - ft1.mp4
-  - ft2.mp4
-  - ft3.mp4
-  - ft4.mp4
-  - ft5.mp4
-  - ft6.mp4
-  videoPlayer: {fileID: 1693095301}
+  comicPages:
+  - {fileID: 21300000, guid: b4bcfc40c1a6da54ead3ca1db1a99a18, type: 3}
+  - {fileID: 21300000, guid: a243d3f43e1015a4eb0bfebb1a211338, type: 3}
+  - {fileID: 21300000, guid: 459d0a640fbc7f64fb68a51023276077, type: 3}
+  - {fileID: 21300000, guid: 4b3611fae2cae6f4480760c94bf6affa, type: 3}
+  - {fileID: 21300000, guid: 6fd73869ff87d9d4384ae184f8306832, type: 3}
+  - {fileID: 21300000, guid: 6d6e3dfbaf8bcaf488cafc09fcb3ce8a, type: 3}
+  pageDisplay: {fileID: 1857424784}
   nextScene: MainMenu
 --- !u!114 &2101338454
 MonoBehaviour:
@@ -1258,45 +1258,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1164219774}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-      - m_Target: {fileID: 1693095300}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-      - m_Target: {fileID: 493323031}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 2101338453}
         m_TargetAssemblyTypeName: comic_controller, Assembly-CSharp
-        m_MethodName: nextVideo
+        m_MethodName: nextPage
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
